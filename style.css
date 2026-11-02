@@ -1,0 +1,90 @@
+:root {
+  --bg: #f6f4ef;
+  --card: #ffffff;
+  --ink: #1f2328;
+  --muted: #5d6470;
+  --line: #e2ddd3;
+  --accent: #03a94d;      /* 초록 계열 */
+  --accent-soft: #e3f5ea;
+  --warn: #b42318;
+  --radius: 14px;
+  font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); line-height: 1.6; }
+
+.top { max-width: 1080px; margin: 0 auto; padding: 32px 16px 8px; }
+.brand { margin: 0; font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: .04em; }
+h1 { margin: 4px 0 6px; font-size: clamp(24px, 4vw, 32px); }
+.lead { margin: 0; color: var(--muted); }
+
+.layout {
+  max-width: 1080px; margin: 0 auto; padding: 16px;
+  display: grid; gap: 16px; grid-template-columns: 1fr;
+}
+@media (min-width: 860px) {
+  .layout { grid-template-columns: minmax(0, 1fr) 340px; align-items: start; }
+  .panel { position: sticky; top: 16px; }
+}
+
+.editor, .panel {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 16px;
+}
+.editor-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.editor-head label { font-weight: 700; }
+textarea {
+  width: 100%; min-height: 360px; resize: vertical;
+  padding: 14px; border: 1px solid var(--line); border-radius: 10px;
+  font: inherit; font-size: 16px; line-height: 1.7; color: var(--ink); background: #fffefb;
+}
+@media (min-width: 860px) { textarea { min-height: 520px; } }
+.note { margin: 8px 0 0; font-size: 13px; color: var(--muted); }
+
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.stat {
+  border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 4px;
+}
+.stat .label { width: 100%; font-size: 13px; color: var(--muted); }
+.stat strong { font-size: 22px; font-variant-numeric: tabular-nums; }
+.stat.main { background: var(--accent-soft); border-color: transparent; }
+.stat.main strong { font-size: 28px; }
+.unit { color: var(--muted); font-size: 14px; }
+
+.goal { margin: 16px 0 0; border: 1px solid var(--line); border-radius: 10px; padding: 12px; min-width: 0; }
+.goal legend { font-weight: 700; padding: 0 4px; }
+.presets { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.presets button { padding: 8px 4px; }
+.goal-row { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+.goal-row label { font-size: 14px; color: var(--muted); }
+.goal-row input { width: 110px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; font: inherit; font-size: 16px; }
+.goal-row input[aria-invalid="true"] { border-color: var(--warn); }
+.basis { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 10px; font-size: 14px; }
+.error { margin: 8px 0 0; color: var(--warn); font-size: 14px; font-weight: 600; }
+
+.bar { margin-top: 12px; height: 12px; background: #eceae4; border-radius: 99px; overflow: hidden; }
+.bar span { display: block; height: 100%; width: 0; background: #9aa3ad; border-radius: 99px; transition: width .2s; }
+#progress-box.done .bar span { background: var(--accent); }
+.progress-text { margin: 8px 0 0; font-size: 14px; }
+#progress-box.done .progress-text { color: #027a38; font-weight: 700; }
+
+button {
+  font: inherit; font-size: 15px; cursor: pointer;
+  padding: 8px 12px; border-radius: 8px; border: 1px solid var(--line); background: #fff; color: var(--ink);
+}
+button:hover { border-color: #b9b2a5; }
+button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+button.ghost { padding: 4px 10px; font-size: 14px; color: var(--muted); }
+:focus-visible { outline: 3px solid #2f6feb; outline-offset: 2px; }
+
+.copy { margin-top: 16px; }
+#copy { width: 100%; padding: 12px; background: var(--ink); color: #fff; border-color: var(--ink); font-weight: 700; }
+.copy-status { margin: 6px 0 0; font-size: 14px; color: #027a38; min-height: 1em; }
+#manual label { display: block; font-size: 14px; margin-top: 6px; }
+#manual input { width: 100%; margin-top: 6px; padding: 8px; font: inherit; border: 1px solid var(--line); border-radius: 8px; }
+
+.foot { max-width: 1080px; margin: 0 auto; padding: 8px 16px 32px; font-size: 13px; color: var(--muted); }
+[hidden] { display: none !important; }
